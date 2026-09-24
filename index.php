@@ -83,11 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="consultor">
-        <h1>Insira o nome ou ID do seu pokemon!</h1>
+        <h1 style="font-size: 50px;">Pokedex</h1>
         <form method="post">
-            <input class="nome" type="number" name="id1" placeholder="Insira o ID">
-            <input class="nome" name="nome" placeholder="Insira o nome">
-            <button type="submit" class="nome">Pesquisar</button>
+            <div class="menu">
+                <a href="pesquisa.php" class="menu-link">Pesquisar na Pokedex</a>
+                <a href="favoritos.php" class="menu-link">Favoritos</a>
+            </div>
         </form>
     </div>
 </body>

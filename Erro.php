@@ -12,7 +12,7 @@
         <div class="pokebola">●</div>
         <h1>Pokémon não encontrado!</h1>
         <p>Digite um nome ou ID válido.</p>
-        <a href="index.php">Tentar novamente</a>
+        <a href="pesquisa.php">Tentar novamente</a>
     </div>
 </div>
 </html>

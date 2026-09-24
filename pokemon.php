@@ -1,8 +1,8 @@
 <?php
+require_once "conexao.php";
 //Criaçao das variaveis usando $_GET pra pegar do header.
 
 $id = $_GET["id"];
-
 
 if (isset($_GET["id"])) {
     $nome = $_GET["nome"];
@@ -52,78 +52,85 @@ if (isset($_GET["id"])) {
     if ($nomepoke == "Toxtricity-amped" || $nomepoke == "toxtricity-amped") {
         $nomepoke = "Toxtricity";
     }
-    
-}elseif (!isset($_GET["id"])){
+} elseif (!isset($_GET["id"])) {
     $id2 = $_GET["id2"];
-    if($id2 > $id ) {
-    $url = "https://pokeapi.co/api/v2/pokemon/" . $id2;
-    //botar o conteudo encontrado dentro de uma variavel e transformar em manipulavel pelo php
-    $json = @file_get_contents($url);
-    //Se o conteudo nao existir/for falso vai pra tela de erro (ou seja se tiver vazio)
-    if ($json === false) {
-        header("location: Erro.php");
-        exit;
-    }
-    $data = json_decode($json, true);
-    $nome = $data["name"];
-    $nomepoke = $data["name"];
+    if ($id2 > $id) {
+        $url = "https://pokeapi.co/api/v2/pokemon/" . $id2;
+        //botar o conteudo encontrado dentro de uma variavel e transformar em manipulavel pelo php
+        $json = @file_get_contents($url);
+        //Se o conteudo nao existir/for falso vai pra tela de erro (ou seja se tiver vazio)
+        if ($json === false) {
+            header("location: Erro.php");
+            exit;
+        }
+        $data = json_decode($json, true);
+        $nome = $data["name"];
+        $nomepoke = $data["name"];
 
-    //aqui pego o sprite
-    $sprite = $data["sprites"]["front_default"];
+        //aqui pego o sprite
+        $sprite = $data["sprites"]["front_default"];
 
-    //aqui o id
-    $id = $data["id"];
+        //aqui o id
+        $id = $data["id"];
 
-    //aqui hp, ataque e defesa
-    $hp = $data["stats"]["0"]["base_stat"];
-    $ata = $data["stats"]["1"]["base_stat"];
-    $def = $data["stats"]["2"]["base_stat"];
+        //aqui hp, ataque e defesa
+        $hp = $data["stats"]["0"]["base_stat"];
+        $ata = $data["stats"]["1"]["base_stat"];
+        $def = $data["stats"]["2"]["base_stat"];
 
-    //tipo, mesmo esquema da outra page
-    $tipo = $data["types"][0]["type"]["name"];
+        //tipo, mesmo esquema da outra page
+        $tipo = $data["types"][0]["type"]["name"];
         if (isset($data["types"][1])) {
-        $tipo2 = $data["types"][1]["type"]["name"];
-        header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&tipo2=$tipo2&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
-        //caso nao tenha 2 tipos, só jogar todo mundo pro pokemon.php sem o segundo tipo
-    } else {
-        //ai depois precisa do header normal ne, caso ele tenha so 1 tipagem
-        header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
-    }
-}elseif ($id2 < $id ) {
-    $url = "https://pokeapi.co/api/v2/pokemon/" . $id2;
-    //botar o conteudo encontrado dentro de uma variavel e transformar em manipulavel pelo php
-    $json = @file_get_contents($url);
-    //Se o conteudo nao existir/for falso vai pra tela de erro (ou seja se tiver vazio)
-    if ($json === false) {
-        header("location: Erro.php");
-        exit;
-    }
-    $data = json_decode($json, true);
-    $nome = $data["name"];
-    $nomepoke = $data["name"];
+            $tipo2 = $data["types"][1]["type"]["name"];
+            header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&tipo2=$tipo2&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
+            //caso nao tenha 2 tipos, só jogar todo mundo pro pokemon.php sem o segundo tipo
+        } else {
+            //ai depois precisa do header normal ne, caso ele tenha so 1 tipagem
+            header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
+        }
+    } elseif ($id2 < $id) {
+        $url = "https://pokeapi.co/api/v2/pokemon/" . $id2;
+        //botar o conteudo encontrado dentro de uma variavel e transformar em manipulavel pelo php
+        $json = @file_get_contents($url);
+        //Se o conteudo nao existir/for falso vai pra tela de erro (ou seja se tiver vazio)
+        if ($json === false) {
+            header("location: Erro.php");
+            exit;
+        }
+        $data = json_decode($json, true);
+        $nome = $data["name"];
+        $nomepoke = $data["name"];
 
-    //aqui pego o sprite
-    $sprite = $data["sprites"]["front_default"];
+        //aqui pego o sprite
+        $sprite = $data["sprites"]["front_default"];
 
-    //aqui o id
-    $id = $data["id"];
+        //aqui o id
+        $id = $data["id"];
 
-    //aqui hp, ataque e defesa
-    $hp = $data["stats"]["0"]["base_stat"];
-    $ata = $data["stats"]["1"]["base_stat"];
-    $def = $data["stats"]["2"]["base_stat"];
+        //aqui hp, ataque e defesa
+        $hp = $data["stats"]["0"]["base_stat"];
+        $ata = $data["stats"]["1"]["base_stat"];
+        $def = $data["stats"]["2"]["base_stat"];
 
-    //tipo, mesmo esquema da outra page
-    $tipo = $data["types"][0]["type"]["name"];
+        //tipo, mesmo esquema da outra page
+        $tipo = $data["types"][0]["type"]["name"];
         if (isset($data["types"][1])) {
-        $tipo2 = $data["types"][1]["type"]["name"];
-        header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&tipo2=$tipo2&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
-        //caso nao tenha 2 tipos, só jogar todo mundo pro pokemon.php sem o segundo tipo
-    } else {
-        //ai depois precisa do header normal ne, caso ele tenha so 1 tipagem
-        header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
+            $tipo2 = $data["types"][1]["type"]["name"];
+            header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&tipo2=$tipo2&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
+            //caso nao tenha 2 tipos, só jogar todo mundo pro pokemon.php sem o segundo tipo
+        } else {
+            //ai depois precisa do header normal ne, caso ele tenha so 1 tipagem
+            header("location: pokemon.php?nome=$nome&id=$id&sprite=$sprite&tipo=$tipo&nomepoke=$nomepoke&def=$def&ata=$ata&hp=$hp");
+        }
     }
-}}
+}
+//Parte do código pra verificar se o pokemon é favoritado
+$sql = "SELECT * FROM favoritos WHERE pokemon_id = $id";
+$resultado = $conn->query($sql);
+$favoritado = false;
+if ($resultado->num_rows == 1) {
+    $favoritado = true;
+}
 
 ?>
 
@@ -142,7 +149,7 @@ if (isset($_GET["id"])) {
 <body>
     <div class="consultor1">
         <div style="display: flex; justify-content: space-around; width: 100%;">
-            <p class="text">Nome: <strong><?php echo $nomepoke ?></strong></p>
+            <p class="text">Nome: <strong><?php echo $nomepoke ?></strong> <button class="favorite" type="button" id="favorite" data-id="<?= $id ?>">☆</button></p>
             <p class="text">ID: <strong><?php echo $id ?></strong></p>
             <p class="text">Tipo: <strong style="color: <?= $cor ?>;"><?php echo $tipo ?></strong></p>
             <!-- Aqui pra baixo tem uma checagem pra ver se existe um segundo tipo,
@@ -158,12 +165,61 @@ if (isset($_GET["id"])) {
         <div style="align-self: center; display: flex; flex-direction: column; align-items: center;">
             <img class="sprite" src="<?= $sprite ?>" alt="sprite">
             <div style="display: flex; align-items: center; gap: 10px; margin-top: 190px;">
-                <a href="pokemon.php?id2=<?=$id - 1 ?>" style="padding: 10px 14px; border: 1px solid #111111; border-radius: 6px; cursor: pointer;">← Anterior</a>
-                <a href="index.php" style="margin-left: 0; position: static;">Pesquisar Denovo</a>
-                <a href="pokemon.php?id2=<?=$id + 1 ?>" style="padding: 10px 14px; border: 1px solid #111111; border-radius: 6px; cursor: pointer;">Próximo →</a>
+                <a href="pokemon.php?id2=<?= $id - 1 ?>" style="padding: 10px 14px; border: 1px solid #111111; border-radius: 6px; cursor: pointer;">← Anterior</a>
+                <a href="pesquisa.php" style="margin-left: 0; position: static;">Pesquisar Denovo</a>
+                <a href="pokemon.php?id2=<?= $id + 1 ?>" style="padding: 10px 14px; border: 1px solid #111111; border-radius: 6px; cursor: pointer;">Próximo →</a>
             </div>
         </div>
     </div>
 </body>
+<script>
+    //buscando o botao da estrela aqui e guardando ele na variavel
+    const botao = document.getElementById("favorite");
+    //pegando a variavel favorito la de cima, que só é true se encontrar o id do pokemon na database
+    const favorito = <?= $favoritado ? 'true' : 'false' ?>;
+
+    //aqui é pra saber se o pokemon ja é favorito ou nao e começar com a estrela já preenchida
+    if (favorito) {
+        botao.textContent = "★";
+        botao.classList.add("favoritado")
+    } else {
+        botao.textContent = "☆";
+        botao.classList.remove("favoritado")
+    }
+    //evento de click na estrela
+    botao.addEventListener("click", function() {
+        //quando clicarn a estrela ele cria uma variavel ida que é igual ao
+        //dataset-id, que foi colocado la em cima (tem o valor do $id)
+        const id = botao.dataset.id;
+        //se a estrela estiver vazia o click faz ela se preencher
+        if (botao.textContent === "☆") {
+            botao.textContent = "★";
+            botao.classList.add("favoritado");
+            const dados = new URLSearchParams();
+            dados.append("pokemon_id", id);
+            dados.append("acao", "favoritar")
+            fetch("favoritos.php", {
+                method: "POST",
+                body: dados
+            })
+
+            //se a estrela nao estiver vazia (estiver preenchida) entao ela fica vazia 
+            //e sai da classlist favoritado
+        } else {
+            const dados = new URLSearchParams();
+            botao.textContent = "☆";
+            botao.classList.remove("favoritado");
+            dados.append("pokemon_id", id);
+            dados.append("acao", "desfavoritar");
+            fetch("favoritos.php", {
+                method: "POST",
+                body: dados
+            })
+        }
+
+
+
+    });
+</script>
 
 </html>
