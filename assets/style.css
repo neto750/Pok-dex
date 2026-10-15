@@ -430,3 +430,318 @@ button:active {
     top: auto;
     margin: 0 !important;
 }
+
+.lista-favoritos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-favorito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-favorito img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.acoes-favorito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.acoes-favorito form {
+    margin: 0;
+}
+
+.btn-ver,
+.acoes-favorito button {
+    display: inline-block;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2463eb;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.acoes-favorito button {
+    background: #dc3545;
+}
+
+.acoes-favorito button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   PÁGINA DE FAVORITOS
+   Estilos independentes do layout pokemon.php
+   ========================================= */
+
+body.pagina-favoritos {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.pagina-favoritos .favoritos-container {
+    width: 100%;
+    max-width: 1120px;
+    min-height: 300px;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow: visible;
+    border-radius: 16px;
+    background: #fff;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+.pagina-favoritos .favoritos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.pagina-favoritos .favoritos-header h1 {
+    margin: 0 0 10px;
+    color: #b8002d;
+    font-size: 32px;
+}
+
+.pagina-favoritos .favoritos-header p {
+    margin: 0;
+    color: #666;
+}
+
+.pagina-favoritos .favoritos-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pagina-favoritos .favoritos-nav a {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: crimson;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    animation: none;
+}
+
+.pagina-favoritos .favoritos-nav a:hover {
+    margin: 0;
+    background: #a90025;
+    transform: translateY(-2px);
+}
+
+.pagina-favoritos .lista-favoritos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+}
+
+.pagina-favoritos .pokemon-favorito {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e2e2e2;
+    border-radius: 14px;
+    background: #fafafa;
+    color: #222;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.pagina-favoritos .pokemon-favorito img {
+    display: block;
+    width: 150px;
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.pagina-favoritos .pokemon-numero {
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.pagina-favoritos .pokemon-favorito h2 {
+    margin: 0;
+    font-size: 21px;
+    text-transform: capitalize;
+}
+
+.pagina-favoritos .pokemon-tipo {
+    margin: 0 0 8px;
+    color: #666;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.pagina-favoritos .acoes-favorito {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.pagina-favoritos .acoes-favorito .btn-ver,
+.pagina-favoritos .acoes-favorito .btn-remover {
+    position: static;
+    display: inline-flex;
+    flex: 1 1 110px;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 42px;
+    margin: 0;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    animation: none;
+}
+
+.pagina-favoritos .acoes-favorito .btn-ver {
+    background: crimson;
+}
+
+.pagina-favoritos .acoes-favorito .btn-ver:hover {
+    margin: 0;
+    background: #a90025;
+    transform: translateY(-2px);
+}
+
+.pagina-favoritos .acoes-favorito form {
+    display: flex;
+    flex: 1 1 110px;
+    min-width: 0;
+    margin: 0;
+}
+
+.pagina-favoritos .acoes-favorito .btn-remover {
+    width: 100%;
+    background: #555;
+}
+
+.pagina-favoritos .acoes-favorito .btn-remover:hover {
+    background: #333;
+}
+
+.pagina-favoritos .acoes-favorito .btn-remover:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.pagina-favoritos .acoes-favorito .btn-remover:active {
+    margin: 0;
+    box-shadow: none;
+}
+
+.pagina-favoritos .mensagem-vazia {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 28px 20px;
+    border: 1px dashed #ccc;
+    border-radius: 12px;
+    background: #fafafa;
+    color: #555;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+    .pagina-favoritos .lista-favoritos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 540px) {
+    body.pagina-favoritos {
+        padding: 14px 8px;
+    }
+
+    .pagina-favoritos .favoritos-container {
+        padding: 18px 12px;
+    }
+
+    .pagina-favoritos .favoritos-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .pagina-favoritos .favoritos-nav {
+        justify-content: flex-start;
+    }
+
+    .pagina-favoritos .lista-favoritos {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .pagina-favoritos .pokemon-favorito {
+        padding: 18px;
+    }
+}

@@ -1,0 +1,20 @@
+CORREÇÃO DOS FAVORITOS - POKÉDEX
+
+Arquivos incluídos:
+- favoritos.php: lista os registros do banco, mostra cards organizados, remove favoritos e processa as requisições da estrela.
+- pokemon.php: busca os dados através do ID e não exige mais os parâmetros nome, sprite, tipo, ata, def e hp enviados na URL. Isso corrige os Undefined array key.
+
+COMO APLICAR
+1. Faça uma cópia de segurança dos arquivos locais atuais.
+2. Copie favoritos.php para C:\xampp\htdocs\Pokedex\favoritos.php.
+3. Copie pokemon.php para C:\xampp\htdocs\Pokedex\pokemon.php.
+4. Não é necessário substituir assets/style.css. A página de favoritos inclui seu CSS isolado dentro do próprio arquivo.
+5. Inicie Apache e MySQL no XAMPP.
+6. Abra http://localhost/Pokedex/favoritos.php e atualize com Ctrl+F5.
+
+Premissas do projeto:
+- conexao.php cria a conexão MySQLi chamada $conn.
+- Existe uma tabela favoritos com a coluna pokemon_id.
+- PHP precisa conseguir acessar a internet para buscar dados da PokéAPI. Se a API estiver indisponível, o card ainda aparece, com o número e uma imagem alternativa, quando possível.
+
+A página pokemon.php agora aceita ?id=25 ou ?id2=25. Os links de "Ver Pokémon" usam apenas o ID.

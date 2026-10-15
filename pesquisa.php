@@ -89,6 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input class="nome" name="nome" placeholder="Insira o nome">
             <button type="submit" class="nome">Pesquisar</button>
         </form>
+            <button type="submit" class="nome" onclick="window.location.href='index.php'">Voltar</button>
     </div>
 </body>
 
